@@ -1,0 +1,82 @@
+
+<project name="reflection" default="compile" basedir=".">
+
+  <property name="build.compiler"              value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+  <property name="build.sysclasspath" value="last"/>
+
+  <target name="compile"
+          depends="reflection"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="reflection" depends="prepare">
+    <javac srcdir="${src}"
+           includes="reflection/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+ <target name="jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/reflection.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="reflection.driver.Driver"/>
+            </manifest>
+        </jar>
+    </target>
+
+
+<target name="run" depends="jar">
+        <java jar="${BUILD}/jar/reflection.jar"  fork="true">
+	  <arg value="${arg0}"/>
+      <arg value="${arg1}"/>
+	  <arg value="${arg2}"/>
+	 </java>
+	
+    </target>
+
+<target name="copy_files">
+        <mkdir dir="Nina_BalachandranMary_assign3/reflection"/>
+        <copy todir="Nina_BalachandranMary_assign3/reflection"> 
+        <fileset dir=".">
+         <include name="src/**" />         
+        <include name="README.txt" />
+        <include name="build.xml" />	
+    </fileset>
+    </copy>
+</target>
+
+<target name="purgeArchives" depends="clean"> 
+  <delete file="./Nina_BalachandranMary_assign3.tar" /> 
+  <delete file="./Nina_BalachandranMary_assign3.tar.gz" />
+</target> 
+
+
+<target name="tarzip" depends="purgeArchives,copy_files"> 
+  <tar destfile="./Nina_BalachandranMary_assign3.tar" basedir="./Nina_BalachandranMary_assign3"/> <!-- includes="./Pinar_Kuzlu_Nina Balachandran_Mary_assign2/**" /> -->
+  <gzip destfile="./Nina_BalachandranMary_assign3.tar.gz" src="./Nina_BalachandranMary_assign3.tar"/>
+  <delete file="./Nina_BalachandranMary_assign3.tar" /> 
+  <delete dir="Nina_BalachandranMary_assign3"/>
+</target>
+
+</project>
