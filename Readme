@@ -1,0 +1,114 @@
+CS542 Design Patterns
+
+Fall 2013
+
+PROJECT 3
+
+
+Due Date: November 10, 2013
+
+Days
+Author(s): NINA BALACHANDRAN MARY
+
+e-mail(s): nbalach1@binghamton.edu
+
+Limitations on input:
+1. Input XML file provided follows strict rules while written for the classes available in the project
+2. Debug values provided lies between 0 and 4
+
+where
+0 shows only unique instances
+1 shows no output
+2 shows Objects created with fields
+3 shows methods invoked whilst deserializing
+4 shows methods invoked whilst serializing
+
+Files contained:
+
+Driver.java, contains the main function
+Compare.java, file that is used to check object equality
+Serializer.java, file used to serialize objects present to a text file
+SerializeTypes.java, contains individual methods to serialize variables belonging to specific datatypes
+deserializeStrategy.java, contains the method that has to be implemented by different classes that perform Deserialization
+Deserialize.java, performs deserialization of given XML file
+DeserializeTypes.java, performs deserialization of individual datatypes that belong to an object
+MyAllTypesFirst.java, class containing set of datatypes and associated getters and setters
+MyAllTypesSecond.java, class containing set of datatypes and associated getters and setters
+ResultInterface.java , contains display methods used that ought be implemented
+Results.java, implements ResultInterface.java
+Debug.java, contains all debug levels possible
+Logging.java, file that uses the debug values
+Build.xml, file for compiling the project
+README.txt, information about project and commands applicable
+
+
+Commands:
+
+ant compile : to compile the project
+ant tarzip : to convert the project to a tar ball
+ant clean : to remove and delete executables (*.class and jar files)
+ant -Darg0=MyAllTypes.txt -Darg1=MyAllTypesCopy.txt -Darg2=3 run : to execute the project
+
+
+Observations:
+1. Program executes as per requirements
+2. diff between input and output reveals no anomaly
+
+
+Output:
+
+Buildfile: C:\workspace\Nina_Balachandran_Mary_assign3\reflection\build.xml
+
+jar:
+      [jar] Building jar: C:\workspace\Nina_Balachandran_Mary_assign3\reflection\build\jar\reflection.jar
+
+run:
+     [java] input: MyAllTypes.txt
+     [java] input: op.txt
+     [java] input: 2
+     [java] In main
+     [java] Object of class reflection.util.MyAllTypesFirst has been created
+     [java] Object of class reflection.util.MyAllTypesSecond has been created
+     [java] Object of class reflection.util.MyAllTypesSecond has been created
+     [java] Object of class reflection.util.MyAllTypesSecond has been created
+     [java] Object of class reflection.util.MyAllTypesFirst has been created
+     [java] 
+     [java] Object 1: reflection.util.MyAllTypesFirst
+     [java] fields contained:
+     [java] myInt
+     [java] myString
+     [java] myDouble
+     [java] myLong
+     [java] myChar
+     [java] Object 1: reflection.util.MyAllTypesSecond
+     [java] fields contained:
+     [java] myIntS
+     [java] myStringS
+     [java] myFloatS
+     [java] myShortS
+     [java] myCharS
+     [java] Object 1: reflection.util.MyAllTypesSecond
+     [java] fields contained:
+     [java] myIntS
+     [java] myStringS
+     [java] myFloatS
+     [java] myShortS
+     [java] myCharS
+     [java] Object 1: reflection.util.MyAllTypesSecond
+     [java] fields contained:
+     [java] myIntS
+     [java] myStringS
+     [java] myFloatS
+     [java] myShortS
+     [java] myCharS
+     [java] Object 1: reflection.util.MyAllTypesFirst
+     [java] fields contained:
+     [java] myInt
+     [java] myString
+     [java] myDouble
+     [java] myLong
+     [java] myChar
+     [java] Exiting main
+
+BUILD SUCCESSFUL
+Total time: 1 second
